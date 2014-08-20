@@ -60,9 +60,9 @@ from urllib import urlencode
 from forum import settings
 
 import socket
-if hasattr(socket, 'setdefaulttimeout'):
-    # Set the default timeout on sockets to 5 seconds
-    socket.setdefaulttimeout(5)
+#if hasattr(socket, 'setdefaulttimeout'):
+#    # Set the default timeout on sockets to 5 seconds
+#    socket.setdefaulttimeout(5)
 
 __version__ = '0.2.0'
 
