@@ -51,7 +51,7 @@ def check_spam(param, comment_type):
                     'success': False,
                     'error_message': _("Sorry, but akismet thinks your %s is spam.") % comment_type
                     }
-                    return HttpResponse(json.dumps(response), mimetype="application/json")
+                    return HttpResponse(json.dumps(response), content_type="application/json")
                 else:
                     captcha_checked = False
                     try:

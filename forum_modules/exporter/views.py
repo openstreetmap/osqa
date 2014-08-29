@@ -74,7 +74,7 @@ def running(request, mode):
     })
 
 def state(request):
-    return HttpResponse(json.dumps(cache.get(CACHE_KEY)), mimetype="application/json")
+    return HttpResponse(json.dumps(cache.get(CACHE_KEY)), content_type="application/json")
 
 @admin_page
 def download(request):

@@ -309,7 +309,7 @@ def node_markdown(request, id):
         raise AnonymousNotAllowedException(_('accept answers'))
 
     node = get_object_or_404(Node, id=id)
-    return HttpResponse(node.active_revision.body, mimetype="text/plain")
+    return HttpResponse(node.active_revision.body, content_type="text/plain")
 
 
 @decorate.withfn(command)
@@ -547,7 +547,7 @@ def mark_tag(request, tag=None, **kwargs):#tagging system
                 pass
         else:
             ts.update(reason=reason)
-    return HttpResponse(json.dumps(''), mimetype="application/json")
+    return HttpResponse(json.dumps(''), content_type="application/json")
 
 def matching_tags(request):
     if len(request.GET['q']) == 0:
@@ -558,7 +558,7 @@ def matching_tags(request):
     for tag in possible_tags:
         tag_output += "%s|%s|%s\n" % (tag.id, tag.name, tag.used_count)
 
-    return HttpResponse(tag_output, mimetype="text/plain")
+    return HttpResponse(tag_output, content_type="text/plain")
 
 def matching_users(request):
     if len(request.GET['q']) == 0:
@@ -570,7 +570,7 @@ def matching_users(request):
     for user in possible_users:
         output += ("%s|%s|%s\n" % (user.id, user.decorated_name, user.reputation))
 
-    return HttpResponse(output, mimetype="text/plain")
+    return HttpResponse(output, content_type="text/plain")
 
 def related_questions(request):
     if request.POST and request.POST.get('title', None):
@@ -581,7 +581,7 @@ def related_questions(request):
 
         return HttpResponse(json.dumps(
                 [dict(title=q.title, url=q.get_absolute_url(), score=q.score, summary=q.summary)
-                 for q in questions.filter_state(deleted=False)[0:10]]), mimetype="application/json")
+                 for q in questions.filter_state(deleted=False)[0:10]]), content_type="application/json")
     else:
         raise Http404()
 

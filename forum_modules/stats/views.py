@@ -17,4 +17,4 @@ def stats_index(request):
 def stats_check(request):
     update_status = check_for_updates()
 
-    return HttpResponse(update_status, mimetype='text/html')
+    return HttpResponse(update_status, content_type='text/html')

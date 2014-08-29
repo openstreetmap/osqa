@@ -49,7 +49,7 @@ class RefreshPageCommand(HttpResponse):
     def __init__(self):
         super(RefreshPageCommand, self).__init__(
                 content=json.dumps({'commands': {'refresh_page': []}, 'success': True}),
-                mimetype="application/json")
+                content_type="application/json")
 
 def command(func, request, *args, **kwargs):
     try:
@@ -77,7 +77,7 @@ def command(func, request, *args, **kwargs):
             }
 
     if request.is_ajax():
-        return HttpResponse(json.dumps(response), mimetype="application/json")
+        return HttpResponse(json.dumps(response), content_type="application/json")
     else:
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 

@@ -7,7 +7,7 @@ def ajax_login_required(view_func):
             return view_func(request,*args,**kwargs)
         else:
             json = json.dumps({'login_required':True})
-            return HttpResponseForbidden(json, mimetype='application/json')
+            return HttpResponseForbidden(json, content_type='application/json')
     return wrap
 
 def ajax_method(view_func):
@@ -16,10 +16,10 @@ def ajax_method(view_func):
             raise Http404
         retval = view_func(request,*args,**kwargs)
         if isinstance(retval, HttpResponse):
-            retval.mimetype = 'application/json'
+            retval.content_type = 'application/json'
             return retval
         else:
             json = json.dumps(retval)
-            return HttpResponse(json, mimetype='application/json')
+            return HttpResponse(json, content_type='application/json')
     return wrap
             

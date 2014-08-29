@@ -68,7 +68,7 @@ def upload(request):#ajax upload file to a question or answer
     except Exception, e:
         result = xml_template % ('', _('Error uploading file. Please contact the site administrator. Thank you. %s' % e), '')
 
-    return HttpResponse(result, mimetype="application/xml")
+    return HttpResponse(result, content_type="application/xml")
 
 def ask(request):
     form = None
