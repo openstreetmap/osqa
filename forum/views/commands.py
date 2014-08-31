@@ -10,7 +10,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 from django.utils.encoding import smart_unicode
 from django.utils.translation import ungettext, ugettext as _
-from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.http import (HttpResponse, HttpResponseRedirect, Http404,
+                         HttpResponseBadRequest)
 from django.shortcuts import get_object_or_404, render_to_response
 
 from django.contrib import messages
@@ -550,10 +551,11 @@ def mark_tag(request, tag=None, **kwargs):#tagging system
     return HttpResponse(json.dumps(''), content_type="application/json")
 
 def matching_tags(request):
-    if len(request.GET['q']) == 0:
-        raise CommandException(_("Invalid request"))
+    q = request.GET.get('q')
+    if not q:
+        return HttpResponseBadRequest(_("Invalid request"))
 
-    possible_tags = Tag.active.filter(name__icontains = request.GET['q'])
+    possible_tags = Tag.active.filter(name__icontains=q)
     tag_output = ''
     for tag in possible_tags:
         tag_output += "%s|%s|%s\n" % (tag.id, tag.name, tag.used_count)
