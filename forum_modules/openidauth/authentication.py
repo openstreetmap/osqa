@@ -1,19 +1,6 @@
 from consumer import OpenIdAbstractAuthConsumer
 from forum.authentication.base import ConsumerTemplateContext
 
-class GoogleAuthConsumer(OpenIdAbstractAuthConsumer):
-    def get_user_url(self, request):
-        return 'https://www.google.com/accounts/o8/id'
-
-class GoogleAuthContext(ConsumerTemplateContext):
-    mode = 'BIGICON'
-    type = 'DIRECT'
-    weight = 200
-    human_name = 'Google'
-    icon = '/media/images/openid/google.gif'
-
-
-
 class YahooAuthConsumer(OpenIdAbstractAuthConsumer):
     def get_user_url(self, request):
         return 'http://me.yahoo.com/'
