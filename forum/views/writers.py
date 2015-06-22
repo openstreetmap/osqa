@@ -14,6 +14,7 @@ from django.utils.translation import ugettext as _
 
 from django.contrib import messages
 
+from forum import settings as django_settings
 from forum.actions import AskAction, AnswerAction, ReviseAction, RollbackAction, RetagAction, AnswerToQuestionAction, CommentToQuestionAction
 from forum.forms import *
 from forum.models import *
