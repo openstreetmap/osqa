@@ -11,12 +11,7 @@
     <link rel="stylesheet" href="{% static 'admin/css/changelists.css' %}" type="text/css"/>
     <!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="{% static 'admin/css/ie.css' %}" /><![endif]-->
     <link rel="stylesheet" type="text/css" media="screen" href="{% media "/media/style/djstyle_admin.css" %}"/>
-    <script src="https://www.google.com/jsapi" type="text/javascript"></script>
-    <script type="text/javascript">
-    //<!--
-        google.load("jquery", "1.3");
-    //-->
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.4.4/jquery.min.js" integrity="sha512-tcexmm0PBc+jOn9UwbgHVpjZIleEKXif1MCkzgNfVjhXKDxwYumrCOxhZ5tIaXHz2DpEE14hfjFn5J+tpaFSCg==" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{% media "/media/js/osqa.admin.js" %}"></script>
     {% block adminjs %}{% endblock %}
     <title>{% trans "OSQA administration area" %} - {% block subtitle %}{% endblock %}</title>

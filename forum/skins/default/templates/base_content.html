@@ -16,7 +16,7 @@
         {% if settings.USE_CUSTOM_CSS|or_preview:request %}
         <link href="{% url "custom_css" %}" rel="stylesheet" type="text/css" />
         {% endif %}
-        <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.8.24/themes/base/jquery-ui.min.css" integrity="sha512-Lzjd1ELD6YCIwIU5uaJldvbibV5Fi7HThNZjrwJHALBJRT6q2a6ndgi8TNgcKcUqGsH6bpT7xyTEi8qRzN1ASg==" crossorigin="anonymous" />
         <!--[if IE 6]>
         <style type="text/css">
         img, div, a { behavior: url({% media "/media/iepngfix/iepngfix.htc" %}) }
@@ -24,12 +24,10 @@
         <![endif]-->
         {% block forestyle %}{% endblock %}
 
-        <script src="https://www.google.com/jsapi" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.4.4/jquery.min.js" integrity="sha512-tcexmm0PBc+jOn9UwbgHVpjZIleEKXif1MCkzgNfVjhXKDxwYumrCOxhZ5tIaXHz2DpEE14hfjFn5J+tpaFSCg==" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js" integrity="sha512-leN1LJ2B5s9cBINeKL5bbT3cQvOebXsezoYGyuMq9oaytpFJgJ1uBOU86lJZObKTFLbMHqP0zFXR/1N6Nnlskw==" crossorigin="anonymous"></script>
         <script type="text/javascript">
         /*<![CDATA[*/
-            google.load("jquery", "1");
-            google.load("jqueryui", "1", {autoload:true});
-
             var i18nLang = '{{ settings.LANGUAGE_CODE }}';
             var appUrl = '{{ settings.APP_URL }}'
             var scriptUrl = '{{ settings.FORCE_SCRIPT_NAME }}/'
