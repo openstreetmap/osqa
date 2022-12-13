@@ -1,0 +1,79 @@
+# encoding:utf-8
+import os.path
+
+SITE_SRC_ROOT = os.path.dirname(__file__)
+LOGGING = {
+    'version': 1,
+    'formatters': {
+        'default': {
+            'format': '[OSQA] TIME: %(asctime)s MSG: %(filename)s:%(funcName)s:%(lineno)d %(message)s',
+        }
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'default',
+        },
+    },
+    'loggers' : {
+        # ensure that all log entries are propagated to root
+        'django': { 'propagate': True },
+        'django.request': { 'propagate': True },
+        'django.security': { 'propagate': True },
+        'py.warnings': { 'propagate': True },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'DEBUG',
+    },
+}
+
+#ADMINS and MANAGERS
+ADMINS = ()
+MANAGERS = ADMINS
+
+DEBUG = False
+DEBUG_TOOLBAR_CONFIG = {
+    'INTERCEPT_REDIRECTS': True
+}
+TEMPLATE_DEBUG = DEBUG
+INTERNAL_IPS = ('127.0.0.1',)
+ALLOWED_HOSTS = ('${OSQA_ALLOWED_HOSTS}',)
+
+DATABASES = {
+    'default': {
+        'ENGINE': '${OSQA_DB_ENGINE}',
+        'NAME': '${OSQA_DB_NAME}',
+        'USER': '${OSQA_DB_USER}',
+        'PASSWORD': '${OSQA_DB_PASSWORD}',
+        'HOST': '${OSQA_DB_HOST}',
+        'PORT': '',
+        'CONN_MAX_AGE': 600,
+    }
+}
+
+CACHE_BACKEND = '${OSQA_CACHE_BACKEND}'
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+# Customize the values below if OSQA is in a subfolder and especially you're planning on
+# running multiple Django applications (OSQA or others) on the same domain in different
+# subfolders
+#SESSION_COOKIE_PATH = '/'
+#CSRF_COOKIE_PATH = '/'
+
+# This should be equal to your domain name, plus the web application context.
+# This shouldn't be followed by a trailing slash.
+# I.e., http://www.yoursite.com or http://www.hostedsite.com/yourhostapp
+APP_URL = '${OSQA_APP_URL}'
+
+#LOCALIZATIONS
+TIME_ZONE = '${OSQA_TIME_ZONE}'
+
+#OTHER SETTINGS
+
+USE_I18N = True
+LANGUAGE_CODE = 'en'
+
+OSQA_DEFAULT_SKIN = 'default'
+
+DISABLED_MODULES = ['books', 'recaptcha', 'project_badges', 'stats', 'localauth', 'facebookauth', 'oauthauth', 'mysqlfulltext']

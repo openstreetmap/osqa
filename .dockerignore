@@ -1,0 +1,7 @@
+.git/
+*.pyc
+.pydevproject
+.settings
+.project
+log/django.osqa.log
+tmp/*
