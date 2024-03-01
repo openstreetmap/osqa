@@ -24,11 +24,11 @@ ui.register(ui.HEADER_LINKS,
             ui.Link(_('faq'), ui.Url('faq'), weight=400, name='FAQ'),
             ui.Link(_('about'), ui.Url('about'), weight=300, name='ABOUT'),
 
-            ui.Link(
-                    visibility=ui.Visibility.ANONYMOUS,
-                    text=_('login'),
-                    url=lambda u, c: reverse('auth_signin'),
-                    weight=200, name='LOGIN'),
+#            ui.Link(
+#                    visibility=ui.Visibility.ANONYMOUS,
+#                    text=_('login'),
+#                    url=lambda u, c: reverse('auth_signin'),
+#                    weight=200, name='LOGIN'),
             ui.Link(
                     visibility=ui.Visibility.AUTHENTICATED,
                     text=_('logout'),
