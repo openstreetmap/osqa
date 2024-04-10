@@ -17,13 +17,15 @@
         {% loopregistry page_top_tabs %}{% spaceless %}
             <a id="nav_{{ tab_name }}"{% ifequal tab tab_name %} class="on"{% endifequal %} href="{{ tab_url }}" >{{ tab_title }}</a>
         {% endspaceless %}{% endloopregistry %}
-        <a id="nav_ask" href="{% url "ask" %}" class="special">{% trans "ask a question" %}</a>
+        <!-- <a id="nav_ask" href="{% url "ask" %}" class="special">{% trans "ask a question" %}</a> -->
     </div>
   </div>
 
   <div class="clear"></div>
   
 	<div id="searchBar">
+    <iframe src="https://duckduckgo.com/search.html?site=help.openstreetmap.org&prefill=Search questions using DuckDuckGo&focus=yes" style="overflow:hidden;margin:0;padding:0;width:408px;height:40px;" frameborder="0"></iframe>
+    <!--
     <form action="{% url "search" %}" method="get">
         {% csrf_token %}
         <div>
@@ -37,6 +39,7 @@
             <input id="type-user" type="radio" value="user" name="t" /><label for="type-user">{% trans "users" %}</label>
         </div>
     </form>	
+    -->
 	</div>
 
 	{% if settings.USE_ANNOUNCEMENT_BAR|or_preview:request %}
