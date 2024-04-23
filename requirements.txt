@@ -1,10 +1,11 @@
-markdown
-html5lib
-python-openid
-South
-python-memcached
-django==1.6.0
+markdown==2.4.1
+html5lib<0.99999999
+python-openid==2.2.5
+South==0.7.6
+python-memcached==1.53
+django==1.6.11
 django-debug-toolbar
 django-endless-pagination
 pytz
+psycopg2==2.7.7
 
